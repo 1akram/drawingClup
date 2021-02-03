@@ -1,45 +1,10 @@
-<html>
-<head>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <!-- Header -->
-    <nav class="navbar top-nav navbar-expand-lg navbar-light bg-white">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <img src="assets/logo.png" class="logo" alt="logo">
-            </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav d-flex flex-fill justify-content-center mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Accueil</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#about">Info</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#gallery">Galerie</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Contact</a>
-              </li>
+@extends('masterLayout.master')
+@section('head')
+@endsection
 
-            </ul>
-            <form class="d-flex align-items-center mb-0">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-    </nav>
+@section('content')
+
+
     <!-- SlideShow -->
     <div class="slide-holder container-fluid">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -60,7 +25,7 @@
                         </div>
                         <div class="col-6">
                             <div class="slide-image">
-                            <img src="assets/img/slide-2.jpg" class="d-block w-100" alt="..."></div>
+                            <img src="{{asset('/img/slide-2.jpg')}}" class="d-block w-100" alt="..."></div>
                         </div>
                     </div>
               </div>
@@ -83,11 +48,11 @@
     </div>
     
     <!-- about -->
-    <div class="container-fluid about-holder">
+    <div id="about" class="container-fluid about-holder">
             <div class="container about">
                 <div class="row">
                     <div class="col-md-6 about-img">
-                   <img src="assets/img/intro-1-570x410.png" alt="">
+                   <img src="{{asset('img/intro-1-570x410.png')}}" alt="">
                     </div>
                     <div class="col-md-6 about-text d-flex flex-column justify-content-center">
                          <div class="text-title">Titre Titre Titre Titre</div>
@@ -98,7 +63,7 @@
     </div>
 
     <!-- gallery -->
-    <div class="gallery-holder container-fluid">
+    <div id="gallery" class="gallery-holder container-fluid">
         <div class="gallery container">
             <div class="row section-title">
                 <div class="text-center">
@@ -106,7 +71,20 @@
                 </div>
             </div>
             <div class="row section-title">
+                @for ($i = 0; $i < 6; $i++)
+                    
                 <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
+                    <div class="gallery-item-inner">
+                        <img class="img img-responsive" src="{{asset('img/gallery.jpg')}}" alt="gallery">
+                        <div class="gallery-item-text">
+                            <div class="item-title">
+                                Name Table
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endfor
+            {{--     <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
                     <div class="gallery-item-inner">
                         <img class="img img-responsive" src="assets/img/gallery.jpg" alt="gallery">
                         <div class="gallery-item-text">
@@ -145,78 +123,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
-                    <div class="gallery-item-inner">
-                        <img class="img img-responsive" src="assets/img/gallery.jpg" alt="gallery">
-                        <div class="gallery-item-text">
-                            <div class="item-title">
-                                Name Table
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
         
             </div>
- <div class="row justify-content-center align-items-center">
-     <a class="btn btn-primary btn btn-show-all btn-secondary m-auto" href="#">SHOW ALL</a>
- </div>
-        </div>
-    
-    </div>
-
-    
-    <!-- footer -->
-    <div class="footer-holder container-fluid">
-        <div class="row footer container">
-           
-                <div class="col-sm-12 col-lg-4">
-                    <div class="footer_logo">
-                        <img src="assets/logo.png" alt="">
-                    </div>
-                    <div class="social_media">
-                        <span>get social : </span>
-                        <div >
-                            <span><a href=""><i class="fa fa-facebook"></i></a></span>
-                            <span><a href=""><i class="fa fa-instagram"></i></a></span>
-                            <span><a href=""><i class="fa fa-google"></i></a></span>
-
-                        </div>
-                    </div>
-
-                </div>
-              
-                <div class="col-sm-12 col-lg-4">
-                      <div class="footer_title">
-                        Contact us
-                    </div>
-                    <div class="contact_items footer_address">
-                       <span><i class="fa fa-map-marker"></i></span>elhama,khenchlea ,jimout
-                    </div>
-                    <div class="contact_items footer_phone">
-                        <span><i class="fa fa-phone"></i></span>223 444 222 777
-                    </div>
-                    <div class="contact_items footer_email">
-                        <span><i class="fa fa-envelope"></i></span>contact@service.com
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-4">
-                    <div class="footer_title">
-                        devloped by:
-                    </div>
-                    <div class="devlopers_info">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, velit repellat exercitationem, blanditiis architecto eveniet natus beatae, perspiciati
-                    </div>
-                </div>
-            
-
-        </div>
-        <div class="shapes">
-            <div class="box"></div>
-            <div class="circle"></div>
+            <div class="row justify-content-center align-items-center">
+                <a class="btn btn-primary btn btn-show-all btn-secondary m-auto" href="#">SHOW ALL</a>
+            </div>
+ 
         </div>
     </div>
+@endsection
 
-    <script src="assets/js/bootstrap.min.js"></script>
-</body>
-</html>
+@section('extr')
+    
+@endsection
