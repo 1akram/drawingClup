@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArtController;
+use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\backEndController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',"App\Http\Controllers\FrontEndController@index")->name('index');
+Route::get('/',[FrontEndController::class,'index'])->name('index');
+
+Route::post('/arts/upload',[ArtController::class,'uploadArts'])->name('uploadArts');
+
+Route::get('/admin/index',[backEndController::class,'index'])->name('backEndIndex');

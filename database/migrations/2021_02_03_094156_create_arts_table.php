@@ -18,8 +18,8 @@ class CreateArtsTable extends Migration
             $table->string('url');
             $table->string('title');
             $table->integer('year')->unsigned();
-            $table->timestamps();
             $table->text('description')->nullable();
+            $table->timestamps();
             
         });
     }

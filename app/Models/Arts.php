@@ -11,6 +11,6 @@ class Arts extends Model
     use HasFactory;
     public function desiners()
     {
-        return $this->belongsToMany(Desiner::class);
+        return $this->belongsToMany(Desiner::class,'arts_desiners','art_id','desiner_id');
     }
 }

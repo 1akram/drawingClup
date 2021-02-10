@@ -16,7 +16,6 @@ class CreateDesinersTable extends Migration
         Schema::create('desiners', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            
             $table->timestamps();
         });
     }

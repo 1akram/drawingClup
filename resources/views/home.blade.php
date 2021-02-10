@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <!-- SlideShow -->
+    {{-- <!-- SlideShow --> --}}
     <div class="slide-holder container-fluid">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -47,7 +47,7 @@
       </div>
     </div>
     
-    <!-- about -->
+    {{-- <!-- about --> --}}
     <div id="about" class="container-fluid about-holder">
             <div class="container about">
                 <div class="row">
@@ -62,7 +62,7 @@
             </div>
     </div>
 
-    <!-- gallery -->
+    {{-- <!-- gallery --> --}}
     <div id="gallery" class="gallery-holder container-fluid">
         <div class="gallery container">
             <div class="row section-title">
@@ -71,60 +71,19 @@
                 </div>
             </div>
             <div class="row section-title">
-                @for ($i = 0; $i < 6; $i++)
-                    
-                <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
-                    <div class="gallery-item-inner">
-                        <img class="img img-responsive" src="{{asset('img/gallery.jpg')}}" alt="gallery">
-                        <div class="gallery-item-text">
-                            <div class="item-title">
-                                Name Table
+                 @foreach ($arts as $art)
+                    <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
+                        <div  class="gallery-item-inner">
+                            <img class="img img-responsive" src="{{asset('img/gallery.jpg')}}" alt="{{$art->title}}">
+                            <div class="gallery-item-text">
+                                <div class="item-title">
+                                    {{$art->title}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endfor
-            {{--     <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
-                    <div class="gallery-item-inner">
-                        <img class="img img-responsive" src="assets/img/gallery.jpg" alt="gallery">
-                        <div class="gallery-item-text">
-                            <div class="item-title">
-                                Name Table
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
-                    <div class="gallery-item-inner">
-                        <img class="img img-responsive" src="assets/img/gallery.jpg" alt="gallery">
-                        <div class="gallery-item-text">
-                            <div class="item-title">
-                                Name Table
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
-                    <div class="gallery-item-inner">
-                        <img class="img img-responsive" src="assets/img/gallery.jpg" alt="gallery">
-                        <div class="gallery-item-text">
-                            <div class="item-title">
-                                Name Table
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
-                    <div class="gallery-item-inner">
-                        <img class="img img-responsive" src="assets/img/gallery.jpg" alt="gallery">
-                        <div class="gallery-item-text">
-                            <div class="item-title">
-                                Name Table
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-        
+                     
+                 @endforeach
             </div>
             <div class="row justify-content-center align-items-center">
                 <a class="btn btn-primary btn btn-show-all btn-secondary m-auto" href="#">SHOW ALL</a>
