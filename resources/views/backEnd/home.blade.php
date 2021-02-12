@@ -58,7 +58,7 @@
 
         <!-- display arts  -->
         <div class="container mt-5">
-            <h1> arts </h1>
+            <h1 id="arts"> arts </h1>
             <div class="row mb-5">
                 <div class="col-sm-4">image</div>
                 <div class="col-sm-4">title</div>
@@ -73,7 +73,7 @@
                         href="#">edit</a></div>
             </div>
             @endforeach
-           
+            {{$arts->onEachSide(1)->links()}}
         </div>
         <!-- end display arts  -->
 

@@ -9,28 +9,42 @@
     <div class="slide-holder container-fluid">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-              <div class="container ">
-                  <div class="row">
+
+            {{-- slider(carousel) items  --}}
+          @for ($i = 0; $i < count($randomArts); $i++)
+            <div class="carousel-item @if ($i==0)active @endif ">
+                <div class="container ">
+                    <div class="row">
                         <div class="col-6 d-flex justify-content-center">
                             <div class="slide-text d-flex  flex-column">
+                                {{-- name of art  --}}
                                 <div class="text-item title">
-                                    Best
+                                    {{$randomArts[$i]->title}}
                                 </div>
+                                {{-- end name of art  --}}
+                                {{-- name of  desiners who desine this art  --}}
                                 <div class="text-item sub-title">
-                                    Equipment &
-                                    Consumables
+                                    @foreach ($randomArts[$i]->desiners as $desiner)
+                                        {{$desiner->full_name}},
+                                    @endforeach
                                 </div>
+                                {{-- end  name of  desiners who desine this art  --}}
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="slide-image">
-                            <img src="{{asset('/img/slide-2.jpg')}}" class="d-block w-100" alt="..."></div>
+                                <img src="{{asset(Storage::url($randomArts[$i]->url))}}" class="d-block w-100" alt="{{$randomArts[$i]->title}}">
+                            </div>
                         </div>
                     </div>
-              </div>
-          </div>
-          
+                </div>
+            </div>
+              
+          @endfor
+            {{-- end slider(carousel) items  --}}
+
+
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -74,7 +88,7 @@
                  @foreach ($arts as $art)
                     <div class="col-sm-12 col-md-6 col-lg-4 gallery-item">
                         <div  class="gallery-item-inner">
-                            <img class="img img-responsive" src="{{asset('img/gallery.jpg')}}" alt="{{$art->title}}">
+                            <img class="img img-responsive" src="{{asset(Storage::url($art->url))}}" alt="{{$art->title}}">
                             <div class="gallery-item-text">
                                 <div class="item-title">
                                     {{$art->title}}
@@ -84,9 +98,11 @@
                     </div>
                      
                  @endforeach
+                
             </div>
             <div class="row justify-content-center align-items-center">
-                <a class="btn btn-primary btn btn-show-all btn-secondary m-auto" href="#">SHOW ALL</a>
+                <div class="pagination-links">{{$arts->onEachSide(1)->links()}}</div>
+                {{-- <a class="btn btn-primary btn btn-show-all btn-secondary m-auto" href="#">SHOW ALL</a> --}}
             </div>
  
         </div>

@@ -23,10 +23,10 @@ class ArtController extends Controller
         ])->validate();
         
          
-        $art=new Arts();
         $uploadedArtsCount=0;
         foreach($request->file('arts')as $_art){
             if ($_art->isValid()) {
+                $art=new Arts();
                 $art->url = $_art->store('arts', 'public' );
                 $art->title = $request->title;
                 $art->year = $request->year;
@@ -38,7 +38,7 @@ class ArtController extends Controller
             
 
         }
-
+        dd($uploadedArtsCount);
         return redirect()->route('backEndIndex')->with('statusMsg',$uploadedArtsCount.' arts uploaded successfully');
 
 
