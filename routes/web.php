@@ -4,19 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\backEndController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/',[FrontEndController::class,'index'])->name('index');
 
-Route::post('/arts/upload',[ArtController::class,'uploadArts'])->name('uploadArts');
+// Routes Prefix Extend()
+Route::prefix(('/auth'))->name('auth.')->group(__DIR__ . '/auth.php');   // routes authetification (login/logout)
+Route::prefix(('/v1'))->middleware('auth')->name('api.')->group(__DIR__ . '/v1/api.php');    // routes api
+Route::prefix(('/dashboard'))->middleware('auth')->name('dashboard.')->group(__DIR__ . '/dashboard.php');    // dashboard routes
 
-Route::get('/admin/index',[backEndController::class,'index'])->name('backEndIndex');
+
+Route::get('/ad-login', function () {
+    return view('login');
+})->middleware('guest')->name('login');
+
+
+
+
+Route::get('/', [FrontEndController::class, 'index'])->name('index');
+
+
+Route::post('/arts/upload', [ArtController::class, 'uploadArts'])->name('uploadArts');
+Route::get('/admin/index', [backEndController::class, 'index'])->name('backEndIndex');
