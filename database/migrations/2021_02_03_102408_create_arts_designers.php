@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDesinersTable extends Migration
+class CreateArtsDesigners extends Migration 
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDesinersTable extends Migration
      */
     public function up()
     {
-        Schema::create('desiners', function (Blueprint $table) {
+        Schema::create('arts_designer', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('email');
+            $table->foreignId('designer_id')->references('id')->on('designer');
+            $table->foreignId('art_id')->references('id')->on('arts');;
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDesinersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desiners');
+        Schema::dropIfExists('arts_designer');
     }
 }

@@ -24,5 +24,7 @@ Route::get('/', [FrontEndController::class, 'index'])->name('index');
 
 
 Route::post('/arts/upload', [ArtController::class, 'uploadArts'])->name('uploadArts');
+Route::post('/arts/delete}', [ArtController::class, 'updateArt'])->name('deletearsts');
+
 Route::get('/admin/index', [backEndController::class, 'index'])->name('backEndIndex');
  

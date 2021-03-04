@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Desiner;
+use App\Models\Designer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,10 +29,10 @@ class DesignerController extends Controller
             return $this->createDesigner($request);
     }
 
-    public function delete(Request $request, Desiner $desiner)
+    public function delete(Request $request, Designer $designer)
     {
-        // $desiner->arts()->sync([]); must delete  arts of the  desiner before delete this desiner  
-        $desiner->delete();
+        // $designer->arts()->sync([]); must delete  arts of the  designer before delete this designer  
+        $designer->delete();
         return [
             'success' => true,
             'message' => 'Dessinateur supprimé avec success.',
@@ -43,7 +43,7 @@ class DesignerController extends Controller
     private function createDesigner(Request $request)
     {
 
-        Desiner::create($request->only('full_name', 'email'));
+        Designer::create($request->only('full_name', 'email'));
         return [
             'success' => true,
             "message" => "Dessinateur a été cree avec success."
@@ -52,16 +52,16 @@ class DesignerController extends Controller
 
     private function updateDesigner(Request $request)
     {
-        $desiner = Desiner::where('id', $request->id)->first();
-        if (!$desiner) {
+        $designer = Designer::where('id', $request->id)->first();
+        if (!$designer) {
             return [
                 'success' => false,
                 "message" => "Bad Request."
             ];
         }
-        $desiner->full_name = $request->full_name;
-        $desiner->email = $request->email;
-        $desiner->save();
+        $designer->full_name = $request->full_name;
+        $designer->email = $request->email;
+        $designer->save();
         return [
             'success' => true,
             "message" => "Dessinateur mise a jour avec success."

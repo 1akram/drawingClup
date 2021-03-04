@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Desiner extends Model
+class Designer extends Model
 {
-    protected $table = 'desiners';
+    protected $table = 'designer';
     protected $guarded = [];
     protected $fillable = [
         'full_name',
@@ -18,6 +18,6 @@ class Desiner extends Model
 
     public function arts()
     {
-        return $this->belongsToMany(Arts::class, 'arts_desiners', 'desiner_id', 'art_id');
+        return $this->belongsToMany(Arts::class, 'arts_designer', 'designer_id', 'art_id');
     }
 }

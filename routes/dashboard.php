@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dash_home');
 Route::get('/designers', [DashboardController::class, 'designers'])->name('designers');
+Route::get('/arts', [DashboardController::class, 'arts'])->name('arts');
+
 
 
 

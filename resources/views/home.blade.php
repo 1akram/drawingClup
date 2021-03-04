@@ -22,13 +22,13 @@
                                     {{$randomArts[$i]->title}}
                                 </div>
                                 {{-- end name of art  --}}
-                                {{-- name of  desiners who desine this art  --}}
+                                {{-- name of  designer who desine this art  --}}
                                 <div class="text-item sub-title">
-                                    @foreach ($randomArts[$i]->desiners as $desiner)
-                                        {{$desiner->full_name}},
+                                    @foreach ($randomArts[$i]->designer as $designer)
+                                        {{$designer->full_name}},
                                     @endforeach
                                 </div>
-                                {{-- end  name of  desiners who desine this art  --}}
+                                {{-- end  name of  designer who desine this art  --}}
                             </div>
                         </div>
                         <div class="col-6">

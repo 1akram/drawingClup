@@ -35,13 +35,13 @@
                         <label class="m-2" for="">year</label>
                         <input class="m-2" name="year" type="number">
                     </div>
-                    <span class="d-block mb-1 mt-5 font-weight-bold">select desiners </span>
+                    <span class="d-block mb-1 mt-5 font-weight-bold">select designer </span>
                     <div class="d-flex flex-column" style="height: 150px;overflow-y: scroll;">
 
-                        @foreach ($desiners as $desiner)
+                        @foreach ($designers as $designer)
                         <div class="input-group">
-                            <label class="m-2" for="desiner{{$desiner->id}}">{{$desiner->full_name}}</label>
-                            <input class="m-2" type="checkbox" name="desiners[]" id="desiner1" value="{{$desiner->id}}">
+                            <label class="m-2" for="designer{{$designer->id}}">{{$designer->full_name}}</label>
+                            <input class="m-2" type="checkbox" name="designer[]" id="designer1" value="{{$designer->id}}">
                         </div>
                         @endforeach
 
@@ -69,13 +69,46 @@
             <div class="row mb-5">
                 <div class="col-sm-4"><img width="100px" height="100px" src="{{asset( Storage::url($art->url))}}" alt="{{$art->title}}"></div>
                 <div class="col-sm-4">{{$art->title}}</div>
-                <div class="col-sm-4"><a class="btn btn-danger" href="#">delete</a> <a class="btn btn-info"
-                        href="#">edit</a></div>
+                <div class="col-sm-4">
+                    <a class="btn btn-danger" href="{{route("deletearsts",['id'=>$art->id])}}">delete</a>
+                    <a class="btn btn-info" href="#">edit</a></div>
             </div>
             @endforeach
             {{$arts->onEachSide(1)->links()}}
         </div>
         <!-- end display arts  -->
+             <!-- add arts  -->
+             <div class="container">
+                <div class="mt-5">add art </div>
+                <div class="row mt-5">
+                    <form action="{{route('deletearsts')}}" method="POST"  >
+                        @csrf
+                        <input type="text" name="id" class="d-block mb-3">
+                        <input class="d-block mb-3" type="text" name="title" placeholder="title">
+                        <textarea name="description" cols="30" rows="10" placeholder="description"></textarea>
+                    
+                        <div class="input-group ">
+                            <label class="m-2" for="">year</label>
+                            <input class="m-2" name="year" type="number">
+                        </div>
+                        <span class="d-block mb-1 mt-5 font-weight-bold">select designer </span>
+                        <div class="d-flex flex-column" style="height: 150px;overflow-y: scroll;">
+    
+                            @foreach ($designers as $designer)
+                            <div class="input-group">
+                                <label class="m-2" for="designer{{$designer->id}}">{{$designer->full_name}}</label>
+                                <input class="m-2" type="checkbox" name="designer[]" id="designer1" value="{{$designer->id}}">
+                            </div>
+                            @endforeach
+    
+                        </div>
+    
+    
+                        <input type="submit" class="btn mt-3 btn-primary w-50 m-auto" value="add">
+                    </form>
+                </div>
+            </div>
+            <!-- end add arts  -->
 
     <!-- end arst  -->
 @endsection

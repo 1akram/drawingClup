@@ -21,8 +21,8 @@ class Arts extends Model
 
 
 
-    public function desiners()
+    public function designer()
     {
-        return $this->belongsToMany(Desiner::class, 'arts_desiners', 'art_id', 'desiner_id');
+        return $this->belongsToMany(Designer::class, 'arts_designer', 'art_id', 'designer_id');
     }
 }
