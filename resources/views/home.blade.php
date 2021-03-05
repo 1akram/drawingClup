@@ -81,7 +81,7 @@
         <div class="gallery container">
             <div class="row section-title">
                 <div class="text-center">
-                    Galerie :
+                    Galerie : @if(Request::filled("search")){{Request::get("search")}} @else all @endif
                 </div>
             </div>
             <div class="row section-title">
