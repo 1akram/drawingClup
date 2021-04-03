@@ -11,6 +11,7 @@ class ArtController extends Controller
 {
      
     public function uploadArts(Request $request){ // you should run  php artisan storage:link command before upload images
+ 
 
         $validator  =Validator::make($request->all(),[
             'title'=>'Required|max:100|string',
@@ -21,6 +22,9 @@ class ArtController extends Controller
             'designer'=>'required|array|min:1',
             'designer.*'=>'required|exists:App\Models\Designer,id',//the Designer should be exist in database 
         ]) ;
+        
+        $request->year =  date('Y-m-d', strtotime($request->year));
+
         if ($validator->fails()) {
             return [
                 'success' => false,
