@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ArtController;
 use App\Http\Controllers\DesignerController;
 use App\Models\Designer;
 use App\Models\Arts;

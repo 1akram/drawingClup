@@ -1,8 +1,8 @@
 function initArtsPage(designers, removeRoute) {
-    let designer_form = document.getElementById("desinger_item_form");
-    let edit_designer_modal = "#new_desinger_modal";
+    let designer_form = document.getElementById("art_item_form");
+    let edit_designer_modal = "#new_art_modal";
 
-    $(".designers_list .ed_button").each(function () {
+    $(".arts_list .ed_button").each(function () {
         $(this).click(function () {
             let id = $(this).attr("data-id");
             let { email, full_name } = designers.find(
@@ -12,7 +12,7 @@ function initArtsPage(designers, removeRoute) {
         });
     });
 
-    $(".designers_list .rm_button").each(function () {
+    $(".arts_list .rm_button").each(function () {
         $(this).click(function () {
             let id = $(this).attr("data-id");
             removeDesigner(id);
@@ -58,7 +58,7 @@ function initArtsPage(designers, removeRoute) {
         $(edit_designer_modal).modal();
     }
 
-    $("#new_designer").click(openNewModal);
+    $("#new_art").click(openNewModal);
 
     designer_form.onsubmit = saveDesigner;
 

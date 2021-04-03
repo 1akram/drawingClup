@@ -15,12 +15,11 @@ class CreateArtsTable extends Migration
     {
         Schema::create('arts', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
             $table->string('title');
-            $table->integer('year')->unsigned();
+            $table->string('url');
+            $table->date('year');
             $table->text('description')->nullable();
             $table->timestamps();
-            
         });
     }
 

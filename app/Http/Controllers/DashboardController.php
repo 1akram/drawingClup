@@ -21,10 +21,10 @@ class DashboardController extends Controller
 
     public function arts(){ 
         $arts = Arts::all();
-        return view('dashboard.arts',compact([
-            'arts',
-        ]));
+        $designers = Designer::all();
+        return view('dashboard.arts',[
+            'arts'=>$arts,
+            "designers"=>$designers
+        ]);
     }
-
-
 }
