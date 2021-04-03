@@ -61,6 +61,13 @@
 </form>
 <!-- Page content-->
 
+@error('form')
+
+<div class="alert alert-danger" role="alert">
+  <strong>Error :</strong> {{ $message }}
+</div>
+
+@enderror
 
 <div class="header bg-primary pb-6">
   <div class="container-fluid">

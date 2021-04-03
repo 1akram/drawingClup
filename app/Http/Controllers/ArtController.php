@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Storage;
 
 use App\Models\Arts;
+use Illuminate\Support\Facades\Redirect;
+
 class ArtController extends Controller
 {
      
@@ -25,13 +27,17 @@ class ArtController extends Controller
         
         $request->year =  date('Y-m-d', strtotime($request->year));
 
-        if ($validator->fails()) {
-            return [
-                'success' => false,
-                "message" => $validator->errors()->first()
-            ];
-        }
-        
+        // if ($validator->fails()) {
+        //     return [
+        //         'success' => false,
+        //         "message" => $validator->errors()->first()
+        //     ];
+        // }
+
+        if($validator->fails())
+            return Redirect::back()->withErrors(['form'=>$validator->errors()->first()]);
+
+                
          
         $uploadedArtsCount=0;
         foreach($request->file('arts')as $_art){
@@ -45,17 +51,14 @@ class ArtController extends Controller
                 $art->designer()->sync($request->designer);
                 $uploadedArtsCount++;
             }
-            
-
         }
+        
+        return Redirect::back()->with(["message"=>"Arts uploaded successfully"]);
        
-        return [
-            'success' => true,
-            "message" => $uploadedArtsCount.' arts uploaded successfully'
-        ];
-
-
-
+        // return [
+        //     'success' => true,
+        //     "message" => $uploadedArtsCount.' arts uploaded successfully'
+        // ];
     }
 
     public function updateArt(Request $request){  
