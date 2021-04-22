@@ -39,7 +39,7 @@ class ArtController extends Controller
 
                 
          
-        $uploadedArtsCount=0;
+       // $uploadedArtsCount=0;
         foreach($request->file('arts')as $_art){
             if ($_art->isValid()) {
                 $art=new Arts();
@@ -49,7 +49,7 @@ class ArtController extends Controller
                 $art->description = $request->description;
                 $art->save(); 
                 $art->designer()->sync($request->designer);
-                $uploadedArtsCount++;
+              //  $uploadedArtsCount++;
             }
         }
         

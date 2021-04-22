@@ -163,7 +163,7 @@
 
 <script>
 $(document).ready(function() {
-  initArtsPage([], "{{ route('api.designer_remove','')}}");
+  initArtsPage(@json($arts), "{{ route('api.art_remove','')}}");
 })
 </script>
 @endsection

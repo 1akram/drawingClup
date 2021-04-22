@@ -1,11 +1,11 @@
-function initArtsPage(designers, removeRoute) {
+function initArtsPage(arts, removeRoute) {
     let designer_form = document.getElementById("art_item_form");
     let edit_designer_modal = "#new_art_modal";
 
     $(".arts_list .ed_button").each(function () {
         $(this).click(function () {
             let id = $(this).attr("data-id");
-            let { email, full_name } = designers.find(
+            let { email, full_name } = arts.find(
                 ({ id: desId }) => desId == id
             );
             fillForm({ id, email, full_name });
@@ -15,16 +15,16 @@ function initArtsPage(designers, removeRoute) {
     $(".arts_list .rm_button").each(function () {
         $(this).click(function () {
             let id = $(this).attr("data-id");
-            removeDesigner(id);
+            removeArt(id);
         });
     });
 
-    async function removeDesigner(designerId) {
+    async function removeArt(designerId) {
         showConfirmDialog(
             "êtes-vous sûr de vouloir supprimer ce dessianteur",
             "danger",
             () => {
-                let _token = $('.designers_list input[name="_token"]').val();
+                let _token = $('.arts_list input[name="_token"]').val();
                 APIFetch(
                     `${removeRoute}/${designerId}`,
                     {
