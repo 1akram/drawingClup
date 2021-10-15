@@ -20,7 +20,6 @@ class Arts extends Model
     }
 
 
-
     public function designer()
     {
         return $this->belongsToMany(Designer::class, 'arts_designer', 'art_id', 'designer_id');

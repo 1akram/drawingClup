@@ -1,39 +1,25 @@
 <?php
 
-use App\Http\Controllers\ArtController;
-use App\Http\Controllers\DesignerController;
-use App\Models\Designer;
-use App\Models\Arts;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\UploadController;
+use App\Models\Designer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+
+
+/* Upload API */
+Route::post('/upload/painter', function (Request $request) {
+    $res = UploadController::profileUpload($request);
+    return Response($res);
+});
+/* Todo Upload ARt */
 
 
 
-Route::post('/designer', [DesignerController::class, 'createUpdate'])->name('designer');
-
-Route::delete('/designer/{designer}', [DesignerController::class, 'delete'])->name('designer_remove');
-
-
-
-Route::post('/art', [ArtController::class, 'uploadArts'])->name('art');/*
-        request should include 
-            title,
-            description ,
-            arts[], 
-            year,
-            designers[],  // designers ids  */
-
-Route::post('/art/update', [ArtController::class, 'updateArt'])->name('art_update'); 
-/*      same form of uploadArts  just hide arts input , add id input  and change the route 
-
-
-        request should include 
-            id,
-            title,
-            description ,
-            year,
-            designers[],  // designers ids  */
-
-Route::delete('/art/{art}', [ArtController::class, 'delete'])->name('art_remove');
- 
-
- 
+/* Designer API ROUTES */
+Route::post('/designer/', function (Request $request) {
+    $response = Designer::updateInfo($request);
+    return Response($response);
+});

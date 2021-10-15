@@ -15,8 +15,12 @@ class CreateDesignersTable extends Migration
     {
         Schema::create('designer', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+            $table->string('name');
             $table->string('email');
+
+            $table->string('descreption');
+            $table->string('picture')->nullable();
+            
             $table->timestamps();
         });
     }
